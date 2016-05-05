@@ -196,9 +196,9 @@ public class LevelModel extends Observable implements Runnable {
 	private void playCollisionSound(int posX, int posY) {
 		String collisionSound = null;
 
-		if (this.getRockford().isCollisionDone() == false) {
+		if (!this.getRockford().isCollisionDone()) {
 			// Out of bounds?
-			if (this.isOutOfBounds(posX, posY) == true) {
+			if (this.isOutOfBounds(posX, posY)) {
 				collisionSound = "touch";
 			} else {
 				DisplayableElementModel nextElement = this.groundGrid[posX][posY];
@@ -246,7 +246,7 @@ public class LevelModel extends Observable implements Runnable {
 		this.playCollisionSound(posX, posY);
 
 		// Check that we are not out of bound...
-		if (this.isOutOfBounds(posX, posY) == false) {
+		if (!this.isOutOfBounds(posX, posY)) {
 			// Create a new empty model in the old pos of Rockford
 			this.groundGrid[oldX][oldY] = new EmptyModel();
 
