@@ -327,7 +327,11 @@ public class LevelSaveHelper {
         groupValue       = curGridElement.getGroupName();
         nameValue        = curGridElement.getSpriteName();
         stateValue       = curGridElement.getStateValue();
-        convertibleValue = curGridElement.isConvertible() ? "1" : "0";
+        if (curGridElement.isConvertible()) {
+            convertibleValue = "1";
+        } else {
+            convertibleValue = "0";
+        }
 
         // Create sprite XML element
         Element gridLineItemSpriteElement = document.createElement("sprite");
