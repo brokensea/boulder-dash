@@ -39,11 +39,11 @@ public class WinLoseView extends JFrame{
     private void createLayout() {    	
     	JTextArea help = new JTextArea();
     	help.setEditable(false);
-    	if(winOrLose.equals("win"))
+        if(winOrLose.equals("win")) {
 	    	help.setText("YOU WIN THE GAME :-)");
-    	else
+        } else {
     		help.setText("YOU LOSE THE GAME :-( TRY AGAIN!");
-    	
+        }
         this.add(help);
     }
 }
