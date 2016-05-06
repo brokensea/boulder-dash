@@ -48,7 +48,7 @@ public class LevelSelectorHelper {
         if(availableLevels.length > 0) {
             menuLevelList.setChoiceValue(availableLevels[0]);
             menuLevelList.setSelectedIndex(0);
-        };
+        }
 
         menuLevelList.addActionListener(menuLevelList);
 
