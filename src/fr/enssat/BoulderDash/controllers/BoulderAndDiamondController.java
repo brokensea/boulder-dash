@@ -145,11 +145,7 @@ public class BoulderAndDiamondController implements Runnable {
 			if (this.levelModel.getGroundLevelModel()[x][y].getSpriteName() == "boulder" 
 					&& (this.levelModel.getGroundLevelModel()[x][y+2].getSpriteName() == "dirt" ||
 							this.levelModel.getGroundLevelModel()[x][y+2].getSpriteName() == "black")) {
-				if(this.levelModel.getGroundLevelModel()[x][y].isConvertible()) {
-					this.levelModel.transformThisBoulderIntoADiamond(x, y);
-				} else {
-					this.levelModel.deleteThisBoulder(x, y);
-				}
+                transformThisBoulderIntoADiamondOrDeleteThisBoulder(x,y);
 			}
 		} else if (elementBelow.isDestructible() && spriteNameBelow != "dirt" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
 				this.levelModel.exploseThisBrickWall(x, y);
@@ -161,4 +157,12 @@ public class BoulderAndDiamondController implements Runnable {
 			this.levelModel.getGroundLevelModel()[x][y].setFalling(false);
 		}
 	}
+
+    private void transformThisBoulderIntoADiamondOrDeleteThisBoulder(int x, int y) {
+        if(this.levelModel.getGroundLevelModel()[x][y].isConvertible()) {
+            this.levelModel.transformThisBoulderIntoADiamond(x, y);
+        } else {
+            this.levelModel.deleteThisBoulder(x, y);
+        }
+    }
 }

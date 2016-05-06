@@ -229,9 +229,7 @@ public class LevelLoadHelper {
                                     continue;
                                 }
 
-                                if(currentSpriteConvertibleValue.equals("1")) {
-									currentSpriteConvertible = true;
-                                }
+                                currentSpriteConvertible = newCurrentSpriteConvertible(currentSpriteConvertibleValue, currentSpriteConvertible);
 
 								// Process positions
 								int pX = rowIndex + this.limitsOffsetWidth;
@@ -249,6 +247,14 @@ public class LevelLoadHelper {
 			}
 		}
 	}
+
+    private boolean newCurrentSpriteConvertible(String currentSpriteConvertibleValue, boolean currentSpriteConvertible) {
+        boolean tmp = currentSpriteConvertible;
+        if(currentSpriteConvertibleValue.equals("1")) {
+			tmp = true;
+        }
+        return tmp;
+    }
 
     /**
      * Constructs the grid element

@@ -101,10 +101,7 @@ public class LevelSaveHelper {
 
                 if(!matchedId.isEmpty()) {
                     tempLevelId = new Integer(matchedId);
-
-                    if (tempLevelId > electedLastLevelId) {
-                        electedLastLevelId = tempLevelId;
-                    }
+                    electedLastLevelId = newElectedLastLevelId(tempLevelId, electedLastLevelId);
                 } else {
                     System.out.println("Match found but result empty for > " + file.getName());
                 }
@@ -124,6 +121,14 @@ public class LevelSaveHelper {
         }
 
         return "level" + finalLevelId;
+    }
+
+    private static int newElectedLastLevelId(int tempLevelId, int electedLastLevelId) {
+        int tmp = electedLastLevelId;
+        if (tempLevelId > electedLastLevelId) {
+            tmp = tempLevelId;
+        }
+        return tmp;
     }
 
     /**
