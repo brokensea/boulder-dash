@@ -319,8 +319,6 @@ public class LevelSaveHelper {
      * @return  Grid line item sprite node
      */
     private Node gridLineItemSpriteNode(Document document, Integer curLineIndex, Integer curItemIndex) {
-        String groupValue, nameValue, stateValue, convertibleValue;
-
         DisplayableElementModel curGridElement = this.getGroundGrid()[curItemIndex][curLineIndex];
 
         // Null?
@@ -329,6 +327,7 @@ public class LevelSaveHelper {
         }
 
         // Retrieve current values
+        String groupValue, nameValue, stateValue, convertibleValue;
         groupValue       = curGridElement.getGroupName();
         nameValue        = curGridElement.getSpriteName();
         stateValue       = curGridElement.getStateValue();
