@@ -56,10 +56,12 @@ public class BoulderAndDiamondController implements Runnable {
      * Note: scan of the ground upside down: we want things to fall slowly !
 	 */
 	private void manageFallingObject() {
+		int x2;
 		for (int x = this.levelModel.getSizeWidth() - 1; x >= 0; x--) {
+			x2 = x;
 			for (int y = this.levelModel.getSizeHeight() - 1; y >= 0; y--) {
 				// Gets the spriteName of actual DisplayableElementModel object scanned
-				DisplayableElementModel elementModel = this.levelModel.getGroundLevelModel()[x][y];
+				DisplayableElementModel elementModel = this.levelModel.getGroundLevelModel()[x2][y];
 
 				if(elementModel == null) {
 					elementModel = new DirtModel();
@@ -69,10 +71,10 @@ public class BoulderAndDiamondController implements Runnable {
 				
 				// If it is a boulder or a diamond...
 				if (spriteName == "boulder" || spriteName == "diamond") {
-					this.manageFall(x, y);
+					this.manageFall(x2, y);
 				} else if(spriteName == "expandingwall"){
-					if(this.expandWall(x,y).equals("left")){
-						x -= 1;
+					if(this.expandWall(x2,y).equals("left")){
+						x2 -= 1;
 					}
 				}
 			}
