@@ -20,11 +20,11 @@ public abstract class DisplayableElementModel {
 	private static String groupName;
 	private static String stateValue;
 
-	private boolean destructible;
-	private boolean moving;
-	private boolean animate;
-	private boolean impactExplosive;
 	private String spriteName;
+	private boolean isDestructible;
+	private boolean canMove;
+	private boolean impactExplosive;
+	private boolean animate;
 	private int priority;
 	private BufferedImage sprite;
     private boolean falling;
@@ -50,8 +50,8 @@ public abstract class DisplayableElementModel {
 	 * @param  animate          Object can be animated?
 	 */
 	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String collideSound, boolean convertible) {
-		this.moving = moving;
-		this.destructible = destructible;
+		this.canMove = moving;
+		this.isDestructible = destructible;
 		this.spriteName = spriteName;
 		this.priority = priority;
 		this.animate = animate;
@@ -74,7 +74,7 @@ public abstract class DisplayableElementModel {
 	 * @return  Whether object is destructible or not
 	 */
 	public boolean isDestructible() {
-		return this.destructible;
+		return this.isDestructible;
 	}
 
 	/**
@@ -83,7 +83,7 @@ public abstract class DisplayableElementModel {
      * @return  Whether object is moving or not
 	 */
 	public boolean isMoving() {
-		return this.moving;
+		return this.canMove;
 	}
 
 	/**

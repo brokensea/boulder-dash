@@ -13,7 +13,7 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
  */
 public class ExpandingWallModel extends DisplayableElementModel {
 	private static String spriteName;
-	private static boolean destructible;
+	private static boolean isDestructible;
 	private static boolean canMove;
 	private static boolean impactExplosive;
 	private static boolean animate;
@@ -27,7 +27,7 @@ public class ExpandingWallModel extends DisplayableElementModel {
     */
 	static {
 		spriteName = "expandingwall";
-		destructible = false;
+		isDestructible = false;
 		canMove = false;
 		impactExplosive = false;
 		animate = false;
@@ -40,7 +40,7 @@ public class ExpandingWallModel extends DisplayableElementModel {
      * Class constructor
      */
 	public ExpandingWallModel() {
-		super(destructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
+		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
 		this.loadSprite(spriteName);
 	}
 }
