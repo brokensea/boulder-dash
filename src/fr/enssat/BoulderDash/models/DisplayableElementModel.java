@@ -20,7 +20,7 @@ public abstract class DisplayableElementModel {
 	private static String groupName;
 	private static String stateValue;
 
-	private String spriteName;
+	protected String spriteName;
 	private Properties properties;
 	private int priority;
 	private BufferedImage sprite;
