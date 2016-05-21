@@ -21,13 +21,9 @@ public abstract class DisplayableElementModel {
 	private static String stateValue;
 
 	private String spriteName;
-	private boolean isDestructible;
-	private boolean canMove;
-	private boolean impactExplosive;
-	private boolean animate;
+	private Properties properties;
 	private int priority;
 	private BufferedImage sprite;
-    private boolean falling;
 	private boolean convertible;
 	private String collideSound;
 
@@ -46,21 +42,17 @@ public abstract class DisplayableElementModel {
 	 * @param  priority         Object priority?
 	 */
 	public DisplayableElementModel(Properties properties, String spriteName, int priority, String collideSound, boolean convertible) {
-		this.canMove = properties.isCanMove();
-		this.isDestructible = properties.isDestructible();
+		this.properties = properties;
 		this.spriteName = spriteName;
 		this.priority = priority;
-		this.animate = properties.isAnimate();
-		this.impactExplosive = properties.isImpactExplosive();
 		this.priority = priority;
-		this.falling = properties.isFalling();
         this.convertible = convertible;
 		this.collideSound = collideSound;
 	}
 
     public DisplayableElementModel(Properties properties, String spriteName, int priority, String collideSound) {
         this(
-                new Properties(properties.isDestructible(), properties.isCanMove(), properties.isImpactExplosive(), properties.isAnimate(), properties.isFalling()), spriteName, priority, collideSound, false
+                properties, spriteName, priority, collideSound, false
         );
     }
 
@@ -70,7 +62,7 @@ public abstract class DisplayableElementModel {
 	 * @return  Whether object is destructible or not
 	 */
 	public boolean isDestructible() {
-		return this.isDestructible;
+		return this.properties.isDestructible();
 	}
 
 	/**
@@ -79,7 +71,7 @@ public abstract class DisplayableElementModel {
      * @return  Whether object is moving or not
 	 */
 	public boolean isMoving() {
-		return this.canMove;
+		return this.properties.isCanMove();
 	}
 
 	/**
@@ -151,7 +143,7 @@ public abstract class DisplayableElementModel {
      * @return  Whether object is animated or not
 	 */
 	public boolean isAnimate() {
-		return this.animate;
+		return this.properties.isAnimate();
 	}
 
 	/**
@@ -160,7 +152,7 @@ public abstract class DisplayableElementModel {
      * @return  animate  Whether object is animated or not
 	 */
 	public void setAnimate(boolean animate) {
-		this.animate = animate;
+		this.properties.setAnimate(animate);
 	}
 
 	/**
@@ -169,7 +161,7 @@ public abstract class DisplayableElementModel {
      * @return  Whether object explodes on impact or not
 	 */
 	public boolean isImpactExplosive() {
-		return this.impactExplosive;
+		return this.properties.isImpactExplosive();
 	}
 
 	/**
@@ -178,7 +170,7 @@ public abstract class DisplayableElementModel {
      * @return  impactExplosive  Whether object explodes on impact or not
 	 */
 	public void setImpactExplosive(boolean impactExplosive) {
-		this.impactExplosive = impactExplosive;
+		this.properties.setImpactExplosive(impactExplosive);
 	}
 	
 	/**
@@ -242,7 +234,7 @@ public abstract class DisplayableElementModel {
      * @return  Whether object is falling or not
      */
     public boolean isFalling() {
-        return this.falling;
+        return this.properties.isFalling();
     }
 
     /**
@@ -251,7 +243,7 @@ public abstract class DisplayableElementModel {
      * @param  falling  Whether object is falling or not
      */
     public void setFalling(boolean falling) {
-        this.falling = falling;
+        this.properties.setFalling(falling);
     }
 
     /**
