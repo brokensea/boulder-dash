@@ -15,15 +15,6 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
  * @since       2015-06-19
  */
 public class RockfordModel extends DisplayableElementModel {
-	private static String spriteName;
-	private static boolean isDestructible;
-	private static boolean canMove;
-	private static boolean impactExplosive;
-	private static boolean animate;
-	private static int priority;
-	private static boolean falling;
-	private static String collideSound;
-
     /**
      * Maps the sub images of the sprite file
      */
@@ -61,22 +52,20 @@ public class RockfordModel extends DisplayableElementModel {
      * Static dataset
      * Specifies the physical parameters of the object
      */
-	static {
-		spriteName = "rockford";
-		isDestructible = true;
-		canMove = true;
-		impactExplosive = true;
-		animate = true;
-		priority = 1;
-		falling = false;
-		collideSound = null;
-	}
+	private static final String SPRITE_NAME = "rockford";
+	private static final boolean IS_DESTRUCTIBLE = true;
+	private static final boolean CAN_MOVE = true;
+	private static final boolean IMPACT_EXPLOSIVE = true;
+	private static final boolean ANIMATE = true;
+	private static final int PRIORITY = 1;
+	private static final boolean FALLING = false;
+	private static final String COLLIDE_SOUND = null;
 
     /**
      * Class constructor
      */
 	public RockfordModel() {
-		super(new Properties(isDestructible, canMove, impactExplosive, animate, falling), spriteName, priority, collideSound);
+		super(new Properties(IS_DESTRUCTIBLE, CAN_MOVE, IMPACT_EXPLOSIVE, ANIMATE, FALLING), SPRITE_NAME, PRIORITY, COLLIDE_SOUND);
 		// Speed of the animation of the sprite
 		this.setSpeed(100);
 		// Init the sprites in arrays
