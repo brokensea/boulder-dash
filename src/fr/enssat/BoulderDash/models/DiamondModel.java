@@ -15,13 +15,6 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
  * @since       2015-06-19
  */
 public class DiamondModel extends DisplayableElementModel {
-	private static String spriteName;
-	private static boolean isDestructible;
-	private static boolean canMove;
-	private static boolean impactExplosive;
-	private static boolean animate;
-	private static int priority;
-	private static String collideSound;
 	private long previousTime;
 	private int currentFrame;
 
@@ -35,21 +28,20 @@ public class DiamondModel extends DisplayableElementModel {
      * Static dataset
      * Specifies the physical parameters of the object
      */
-	static {
-		spriteName = "diamond";
-		isDestructible = true;
-		canMove = true;
-		impactExplosive = false;
-		animate = true;
-		priority = 0;
-		collideSound = "coin";
-	}
+	private static final String SPRITE_NAME = "diamond";
+	private static final boolean IS_DESTRUCTIBLE = true;
+	private static final boolean CAN_MOVE = true;
+	private static final boolean IMPACT_EXPLOSIVE = false;
+	private static final boolean ANIMATE = true;
+	private static final int PRIORITY = 0;
+	private static final boolean FALLING = false;
+	private static final String COLLIDE_SOUND = "coin";
 
     /**
      * Class constructor
      */
 	public DiamondModel() {
-		super(new Properties(isDestructible, canMove, impactExplosive, animate, false), spriteName, priority, collideSound);
+		super(new Properties(IS_DESTRUCTIBLE, CAN_MOVE, IMPACT_EXPLOSIVE, ANIMATE, FALLING), SPRITE_NAME, PRIORITY, COLLIDE_SOUND);
 
 		this.initSprites();
 	}
