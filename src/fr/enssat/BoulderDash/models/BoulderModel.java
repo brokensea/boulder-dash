@@ -38,7 +38,7 @@ public class BoulderModel extends DisplayableElementModel {
      * Class constructor
      */
 	public BoulderModel(boolean convertible) {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false, collideSound, convertible);
+		super(new Properties(isDestructible, canMove, impactExplosive, animate, false), spriteName, priority, collideSound, convertible);
         this.loadSprite(spriteName);
 	}
 

@@ -41,30 +41,26 @@ public abstract class DisplayableElementModel {
 
 	/**
      * Class constructor
-     *
-	 * @param  isDestructible     Object destructible?
-	 * @param  canMove           Object is moving?
+	 * @param properties TODO
 	 * @param  spriteName       Object sprite name?
 	 * @param  priority         Object priority?
-	 * @param  impactExplosive  Object explodes on impact?
-	 * @param  animate          Object can be animated?
 	 */
-	public DisplayableElementModel(boolean isDestructible, boolean canMove, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String collideSound, boolean convertible) {
-		this.canMove = canMove;
-		this.isDestructible = isDestructible;
+	public DisplayableElementModel(Properties properties, String spriteName, int priority, String collideSound, boolean convertible) {
+		this.canMove = properties.isCanMove();
+		this.isDestructible = properties.isDestructible();
 		this.spriteName = spriteName;
 		this.priority = priority;
-		this.animate = animate;
-		this.impactExplosive = impactExplosive;
+		this.animate = properties.isAnimate();
+		this.impactExplosive = properties.isImpactExplosive();
 		this.priority = priority;
-		this.falling = falling;
+		this.falling = properties.isFalling();
         this.convertible = convertible;
 		this.collideSound = collideSound;
 	}
 
     public DisplayableElementModel(Properties properties, String spriteName, int priority, String collideSound) {
         this(
-                properties.isDestructible(), properties.isCanMove(), spriteName, priority, properties.isImpactExplosive(), properties.isAnimate(), properties.isFalling(), collideSound, false
+                new Properties(properties.isDestructible(), properties.isCanMove(), properties.isImpactExplosive(), properties.isAnimate(), properties.isFalling()), spriteName, priority, collideSound, false
         );
     }
 
