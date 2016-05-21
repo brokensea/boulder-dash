@@ -42,16 +42,16 @@ public abstract class DisplayableElementModel {
 	/**
      * Class constructor
      *
-	 * @param  destructible     Object destructible?
-	 * @param  moving           Object is moving?
+	 * @param  isDestructible     Object destructible?
+	 * @param  canMove           Object is moving?
 	 * @param  spriteName       Object sprite name?
 	 * @param  priority         Object priority?
 	 * @param  impactExplosive  Object explodes on impact?
 	 * @param  animate          Object can be animated?
 	 */
-	public DisplayableElementModel(boolean destructible, boolean moving, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String collideSound, boolean convertible) {
-		this.canMove = moving;
-		this.isDestructible = destructible;
+	public DisplayableElementModel(boolean isDestructible, boolean canMove, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String collideSound, boolean convertible) {
+		this.canMove = canMove;
+		this.isDestructible = isDestructible;
 		this.spriteName = spriteName;
 		this.priority = priority;
 		this.animate = animate;
