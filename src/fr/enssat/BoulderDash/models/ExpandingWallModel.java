@@ -12,35 +12,24 @@ import fr.enssat.BoulderDash.models.DisplayableElementModel;
  * @since       2015-06-19
  */
 public class ExpandingWallModel extends DisplayableElementModel {
-	private static String spriteName;
-	private static boolean isDestructible;
-	private static boolean canMove;
-	private static boolean impactExplosive;
-	private static boolean animate;
-	private static int priority;
-	private static boolean falling;
-	private static String collideSound;
-	
 	/*
     * Static dataset
     * Specifies the physical parameters of the object
     */
-	static {
-		spriteName = "expandingwall";
-		isDestructible = false;
-		canMove = false;
-		impactExplosive = false;
-		animate = false;
-		priority = 10;
-		falling = false;
-		collideSound = null;
-	}
+	private static final String SPRITE_NAME = "expandingwall";
+	private static final boolean IS_DESTRUCTIBLE = false;
+	private static final boolean CAN_MOVE = false;
+	private static final boolean IMPACT_EXPLOSIVE = false;
+	private static final boolean ANIMATE = false;
+	private static final int PRIORITY = 10;
+	private static final boolean FALLING = false;
+	private static final String COLLIDE_SOUND = null;
 	
     /**
      * Class constructor
      */
 	public ExpandingWallModel() {
-		super(new Properties(isDestructible, canMove, impactExplosive, animate, falling), spriteName, priority, collideSound);
+		super(new Properties(IS_DESTRUCTIBLE, CAN_MOVE, IMPACT_EXPLOSIVE, ANIMATE, FALLING), SPRITE_NAME, PRIORITY, COLLIDE_SOUND);
 		this.loadSprite(spriteName);
 	}
 }
