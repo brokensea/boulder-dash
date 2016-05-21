@@ -40,7 +40,7 @@ public class DirtModel extends DisplayableElementModel {
      * Class constructor
      */
 	public DirtModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
+		super(new Properties(isDestructible, canMove, impactExplosive, animate, falling), spriteName, priority, collideSound);
 
         this.loadSprite(spriteName);
 	}

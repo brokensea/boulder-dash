@@ -49,7 +49,7 @@ public class DiamondModel extends DisplayableElementModel {
      * Class constructor
      */
 	public DiamondModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, false, collideSound);
+		super(new Properties(isDestructible, canMove, impactExplosive, animate, false), spriteName, priority, collideSound);
 
 		this.initSprites();
 	}

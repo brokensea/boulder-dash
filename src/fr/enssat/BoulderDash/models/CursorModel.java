@@ -40,7 +40,7 @@ public class CursorModel extends DisplayableElementModel {
      * Class constructor
      */
     public CursorModel() {
-        super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
+        super(new Properties(isDestructible, canMove, impactExplosive, animate, falling), spriteName, priority, collideSound);
 
         this.loadSprite(spriteName);
     }

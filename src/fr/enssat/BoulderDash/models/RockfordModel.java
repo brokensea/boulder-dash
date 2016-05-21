@@ -76,7 +76,7 @@ public class RockfordModel extends DisplayableElementModel {
      * Class constructor
      */
 	public RockfordModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
+		super(new Properties(isDestructible, canMove, impactExplosive, animate, falling), spriteName, priority, collideSound);
 		// Speed of the animation of the sprite
 		this.setSpeed(100);
 		// Init the sprites in arrays

@@ -62,9 +62,9 @@ public abstract class DisplayableElementModel {
 		this.collideSound = collideSound;
 	}
 
-    public DisplayableElementModel(boolean isDestructible, boolean canMove, String spriteName, int priority, boolean impactExplosive, boolean animate, boolean falling, String collideSound) {
+    public DisplayableElementModel(Properties properties, String spriteName, int priority, String collideSound) {
         this(
-                isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound, false
+                properties.isDestructible(), properties.isCanMove(), spriteName, priority, properties.isImpactExplosive(), properties.isAnimate(), properties.isFalling(), collideSound, false
         );
     }
 

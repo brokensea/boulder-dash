@@ -40,7 +40,7 @@ public class SteelWallModel extends DisplayableElementModel {
      * Class constructor
      */
 	public SteelWallModel() {
-		super(isDestructible, canMove, spriteName, priority, impactExplosive, animate, falling, collideSound);
+		super(new Properties(isDestructible, canMove, impactExplosive, animate, falling), spriteName, priority, collideSound);
 		this.loadSprite(spriteName);
 	}
 }
