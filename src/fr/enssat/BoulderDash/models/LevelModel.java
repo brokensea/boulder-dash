@@ -671,6 +671,34 @@ public class LevelModel extends Observable implements Runnable {
 		this.localNotifyObservers();
 	}
 
+	private enum Direction {
+		DOWN, LEFT, RIGHT
+	}
+
+	public void makeThisBoulderMove(int x, int y, Direction direction) {
+		int xAddend = 0;
+		int yAddend = 0;
+
+		switch(direction) {
+			case DOWN:
+				xAddend = 0;
+				yAddend = 1;
+				break;
+			case LEFT:
+				xAddend = -1;
+				yAddend = 1;
+				break;
+			case RIGHT:
+				xAddend = 1;
+				yAddend = 1;
+				break;
+		}
+
+		this.groundGrid[x][y].setFalling(true);
+		this.groundGrid[x + xAddend][y + yAddend] = this.groundGrid[x][y];
+		this.groundGrid[x][y] = new EmptyModel();
+	}
+
 	/**
 	 * Makes the DisplayableElement[x][y] fall one box down
 	 *
@@ -678,9 +706,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @param  y  Object vertical position
 	 */
 	public void makeThisDisplayableElementFall(int x, int y) {
-		this.groundGrid[x][y].setFalling(true);
-		this.groundGrid[x][y + 1] = this.groundGrid[x][y];
-		this.groundGrid[x][y] = new EmptyModel();
+		makeThisBoulderMove(x,y,Direction.DOWN);
 	}
 
 	/**
@@ -690,9 +716,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @param  y  Object vertical position
 	 */
 	public void makeThisBoulderSlideLeft(int x, int y) {
-		this.groundGrid[x][y].setFalling(true);
-		this.groundGrid[x - 1][y + 1] = this.groundGrid[x][y];
-		this.groundGrid[x][y] = new EmptyModel();
+		makeThisBoulderMove(x,y,Direction.LEFT);
 	}
 
 	/**
@@ -702,9 +726,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @param  y  Object vertical position
 	 */
 	public void makeThisBoulderSlideRight(int x, int y) {
-		this.groundGrid[x][y].setFalling(true);
-		this.groundGrid[x + 1][y + 1] = this.groundGrid[x][y];
-		this.groundGrid[x][y] = new EmptyModel();
+		makeThisBoulderMove(x,y,Direction.RIGHT);
 	}
 
 	/**
