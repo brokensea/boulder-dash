@@ -45,7 +45,6 @@ public abstract class DisplayableElementModel {
 		this.properties = properties;
 		this.spriteName = spriteName;
 		this.priority = priority;
-		this.priority = priority;
         this.convertible = convertible;
 		this.collideSound = collideSound;
 	}

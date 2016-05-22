@@ -22,8 +22,8 @@ public class BrickWallModel extends DisplayableElementModel {
 	private static final boolean IMPACT_EXPLOSIVE = false;
 	private static final boolean ANIMATE = false;
 	private static final int PRIORITY = 3;
-	private static final String COLLIDE_SOUND = "touch";
 	private static final boolean FALLING = false;
+	private static final String COLLIDE_SOUND = "touch";
 
     /**
      * Class constructor
