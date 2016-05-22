@@ -42,7 +42,7 @@ public class MagicWallModel extends DisplayableElementModel {
      * Class constructor
      */
 	public MagicWallModel() {
-		super(new Properties(IS_DESTRUCTIBLE, CAN_MOVE, IMPACT_EXPLOSIVE, ANIMATE, FALLING), SPRITE_NAME, PRIORITY, COLLIDE_SOUND);
+		super(new Properties(IS_DESTRUCTIBLE, CAN_MOVE, IMPACT_EXPLOSIVE, ANIMATE, FALLING), SPRITE_NAME, PRIORITY, COLLIDE_SOUND, false);
 		this.currentFrame = 0;
 		this.speed =  100;
 		this.initSprites();
