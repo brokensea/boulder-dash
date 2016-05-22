@@ -30,7 +30,5 @@ public class EmptyModel extends DisplayableElementModel {
      */
 	public EmptyModel() {
 		super(new Properties(IS_DESTRUCTIBLE, CAN_MOVE, IMPACT_EXPLOSIVE, ANIMATE, FALLING), SPRITE_NAME, PRIORITY, COLLIDE_SOUND);
-
-		this.loadSprite(spriteName);
 	}
 }

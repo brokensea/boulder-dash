@@ -30,6 +30,5 @@ public class ExpandingWallModel extends DisplayableElementModel {
      */
 	public ExpandingWallModel() {
 		super(new Properties(IS_DESTRUCTIBLE, CAN_MOVE, IMPACT_EXPLOSIVE, ANIMATE, FALLING), SPRITE_NAME, PRIORITY, COLLIDE_SOUND);
-		this.loadSprite(spriteName);
 	}
 }

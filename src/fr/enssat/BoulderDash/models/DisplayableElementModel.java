@@ -54,6 +54,7 @@ public abstract class DisplayableElementModel {
         this(
                 properties, spriteName, priority, collideSound, false
         );
+        this.loadSprite(spriteName);
     }
 
     /**
