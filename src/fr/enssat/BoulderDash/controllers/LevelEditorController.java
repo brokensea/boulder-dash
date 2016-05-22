@@ -59,45 +59,12 @@ public class LevelEditorController implements ActionListener {
                 break;
 
             case "save":
-                // Check constraints
-                try {
-                    this.levelModel.checkConstraints();
-
-                    // Save action (direct save)
-                    String levelId = this.levelEditorView.getSelectedLevel();
-                    LevelSaveHelper levelSave;
-
-                    if(levelId == null || levelId.isEmpty()) {
-                        // Create a new level
-                        levelSave = new LevelSaveHelper(levelModel.getGroundLevelModel());
-                    } else {
-                        // Overwrite existing level
-                        levelSave = new LevelSaveHelper(levelId, levelModel.getGroundLevelModel());
-                    }
-
-                    JFrame frameDialog = new JFrame("Info");
-                    JOptionPane.showMessageDialog(frameDialog, "Level saved");
-
-                    this.levelEditorView.openedLevelChange(levelSave.getLevelId());
-                } catch(LevelConstraintNotRespectedException e) {
-                    JFrame frameDialog = new JFrame("Error");
-                    JOptionPane.showMessageDialog(frameDialog, e.getMessage());
-                }
+			    save();
 
                 break;
 
             case "delete":
-                String levelId = this.levelEditorView.getSelectedLevel();
-                JFrame frameDialog = new JFrame("Info");
-
-                if(levelId == null || levelId.isEmpty()) {
-                    JOptionPane.showMessageDialog(frameDialog, "Level not yet saved, no need to delete it!");
-                } else {
-                    new LevelRemoveHelper(levelId);
-                    JOptionPane.showMessageDialog(frameDialog, "Level deleted!");
-
-                    this.levelEditorView.openedLevelChange(null);
-                }
+			    delete();
                 break;
                 
             case "help":
@@ -111,6 +78,47 @@ public class LevelEditorController implements ActionListener {
 
         this.getLevelEditorView().getLevelEditorGroundView().grabFocus();
     }
+
+	private void delete() {
+		String levelId = this.levelEditorView.getSelectedLevel();
+		JFrame frameDialog = new JFrame("Info");
+
+		if(levelId == null || levelId.isEmpty()) {
+		    JOptionPane.showMessageDialog(frameDialog, "Level not yet saved, no need to delete it!");
+		} else {
+		    new LevelRemoveHelper(levelId);
+		    JOptionPane.showMessageDialog(frameDialog, "Level deleted!");
+
+		    this.levelEditorView.openedLevelChange(null);
+		}
+	}
+
+	private void save() {
+		// Check constraints
+		try {
+		    this.levelModel.checkConstraints();
+
+		    // Save action (direct save)
+		    String levelId = this.levelEditorView.getSelectedLevel();
+		    LevelSaveHelper levelSave;
+
+		    if(levelId == null || levelId.isEmpty()) {
+		        // Create a new level
+		        levelSave = new LevelSaveHelper(levelModel.getGroundLevelModel());
+		    } else {
+		        // Overwrite existing level
+		        levelSave = new LevelSaveHelper(levelId, levelModel.getGroundLevelModel());
+		    }
+
+		    JFrame frameDialog = new JFrame("Info");
+		    JOptionPane.showMessageDialog(frameDialog, "Level saved");
+
+		    this.levelEditorView.openedLevelChange(levelSave.getLevelId());
+		} catch(LevelConstraintNotRespectedException e) {
+		    JFrame frameDialog = new JFrame("Error");
+		    JOptionPane.showMessageDialog(frameDialog, e.getMessage());
+		}
+	}
 
     /**
      * Gets the level editor view

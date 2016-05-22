@@ -209,41 +209,45 @@ public class LevelLoadHelper {
 					Node currentRowNode = rowNode.item(x);
 
 					// Current row
-					if (currentRowNode.getNodeType() == Node.ELEMENT_NODE) {
-						Element currentRowElement = (Element) currentRowNode;
-						int rowIndex = Integer.parseInt(currentRowElement.getAttribute("index"));
+					currentRow(lineIndex, currentRowNode);
+				}
+			}
+		}
+	}
 
-						NodeList spriteNode = currentRowElement.getElementsByTagName("sprite");
+	private void currentRow(int lineIndex, Node currentRowNode) {
+		if (currentRowNode.getNodeType() == Node.ELEMENT_NODE) {
+			Element currentRowElement = (Element) currentRowNode;
+			int rowIndex = Integer.parseInt(currentRowElement.getAttribute("index"));
 
-						if (spriteNode.getLength() > 0) {
-							Node currentSpriteNode = spriteNode.item(0);
+			NodeList spriteNode = currentRowElement.getElementsByTagName("sprite");
 
-							if (currentSpriteNode.getNodeType() == Node.ELEMENT_NODE) {
-								Element currentSpriteElement = (Element) currentSpriteNode;
-								String currentSpriteName = currentSpriteElement.getAttribute("name");
-                                String currentSpriteConvertibleValue = currentSpriteElement.getAttribute("convertible");
-                                boolean currentSpriteConvertible = false;
+			if (spriteNode.getLength() > 0) {
+				Node currentSpriteNode = spriteNode.item(0);
 
-                                // No name? Continue.
-                                if(currentSpriteName == null || currentSpriteName.isEmpty()) {
-                                    continue;
-                                }
+				if (currentSpriteNode.getNodeType() == Node.ELEMENT_NODE) {
+					Element currentSpriteElement = (Element) currentSpriteNode;
+					String currentSpriteName = currentSpriteElement.getAttribute("name");
+		            String currentSpriteConvertibleValue = currentSpriteElement.getAttribute("convertible");
+		            boolean currentSpriteConvertible = false;
 
-                                if(currentSpriteConvertibleValue.equals("1")) {
-									currentSpriteConvertible = true;
-                                }
+		            // No name? Continue.
+		            if(currentSpriteName == null || currentSpriteName.isEmpty()) {
+		                return;
+		            }
 
-								// Process positions
-								int pX = rowIndex + this.limitsOffsetWidth;
-								int pY = lineIndex + this.limitsOffsetHeight;
+		            if(currentSpriteConvertibleValue.equals("1")) {
+						currentSpriteConvertible = true;
+		            }
 
-								try {
-									this.groundGrid[pX][pY] = this.constructGridElement(currentSpriteName, pX, pY, currentSpriteConvertible);
-								} catch (UnknownModelException e) {
-									e.printStackTrace();
-								}
-							}
-						}
+					// Process positions
+					int pX = rowIndex + this.limitsOffsetWidth;
+					int pY = lineIndex + this.limitsOffsetHeight;
+
+					try {
+						this.groundGrid[pX][pY] = this.constructGridElement(currentSpriteName, pX, pY, currentSpriteConvertible);
+					} catch (UnknownModelException e) {
+						e.printStackTrace();
 					}
 				}
 			}
