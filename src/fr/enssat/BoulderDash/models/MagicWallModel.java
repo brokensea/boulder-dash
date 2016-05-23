@@ -57,11 +57,10 @@ public class MagicWallModel extends DisplayableElementModel {
 			previousTime = time;
 
 			try {
-				currentFrame += 1;
-
+				this.currentFrame += 1;
 				this.setSprite(framesMagicWall.get(this.currentFrame));
 			} catch (IndexOutOfBoundsException e) {
-				currentFrame = 0;
+				this.currentFrame = 0;
 			}
 		}
 	}
