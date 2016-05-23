@@ -1,6 +1,7 @@
 package fr.enssat.BoulderDash.controllers;
 
 import fr.enssat.BoulderDash.models.LevelModel;
+import fr.enssat.BoulderDash.models.LevelModel.Direction;
 import fr.enssat.BoulderDash.models.DirtModel;
 import fr.enssat.BoulderDash.models.DisplayableElementModel;
 import fr.enssat.BoulderDash.helpers.AudioLoadHelper;
@@ -121,13 +122,13 @@ public class BoulderAndDiamondController implements Runnable {
 
 		// Then, process in case of the surrounding
 		if (spriteNameBelow == "black") {
-			this.levelModel.makeThisDisplayableElementFall(x, y);
+			this.levelModel.makeThisBoulderMove(x,y,Direction.DOWN);
 		} else if (spriteNameBelow == "boulder") {
 			// Boulders have to roll if they hit another boulder
 			if (this.levelModel.getGroundLevelModel()[x - 1][y + 1].getSpriteName() == "black") {
-				this.levelModel.makeThisBoulderSlideLeft(x, y);
+				this.levelModel.makeThisBoulderMove(x,y,Direction.LEFT);
 			} else if (this.levelModel.getGroundLevelModel()[x + 1][y + 1].getSpriteName() == "black") {
-				this.levelModel.makeThisBoulderSlideRight(x, y);
+				this.levelModel.makeThisBoulderMove(x,y,Direction.RIGHT);
 			}
 		} else if (spriteNameBelow == "rockford" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
 			this.levelModel.exploseGround(x, y + 1);
@@ -154,9 +155,9 @@ public class BoulderAndDiamondController implements Runnable {
 		} else if (elementBelow.isDestructible() && spriteNameBelow != "dirt" && this.levelModel.getGroundLevelModel()[x][y].isFalling()) {
 				this.levelModel.exploseThisBrickWall(x, y);
 		} else if (spriteNameLeft == "rockford" && this.levelModel.getRockford().isRunningRight() && this.levelModel.getGroundLevelModel()[x + 1][y].getSpriteName() == "black") {
-			this.levelModel.moveThisBoulderToRight(x, y);
+			this.levelModel.moveThisBoulder(x,y,Direction.RIGHT);
 		} else if (spriteNameRight == "rockford" && this.levelModel.getRockford().isRunningLeft() && this.levelModel.getGroundLevelModel()[x - 1][y].getSpriteName() == "black") {
-			this.levelModel.moveThisBoulderToLeft(x, y);
+			this.levelModel.moveThisBoulder(x,y,Direction.LEFT);
 		} else {
 			this.levelModel.getGroundLevelModel()[x][y].setFalling(false);
 		}
