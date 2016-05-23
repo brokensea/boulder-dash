@@ -740,6 +740,24 @@ public class LevelModel extends Observable implements Runnable {
 		this.groundGrid[x][y] = new EmptyModel();
 	}
 
+	public void moveThisBoulder(int x, int y, Direction direction) {
+		int xAddend = 0;
+
+		switch(direction) {
+			case LEFT:
+				xAddend = -1;
+				break;
+			case RIGHT:
+				xAddend = 1;
+				break;
+			case DOWN:
+				break;
+		}
+
+		this.groundGrid[x + xAddend][y] = this.groundGrid[x][y];
+		this.groundGrid[x][y] = new EmptyModel();
+	}
+
 	/**
 	 * Makes the BoulderModel[x][y] moving to right
 	 *
@@ -747,8 +765,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @param  y  Object vertical position
 	 */
 	public void moveThisBoulderToRight(int x, int y) {
-		this.groundGrid[x + 1][y] = this.groundGrid[x][y];
-		this.groundGrid[x][y] = new EmptyModel();
+		moveThisBoulder(x,y,Direction.RIGHT);
 	}
 
 	/**
@@ -758,8 +775,7 @@ public class LevelModel extends Observable implements Runnable {
 	 * @param  y  Object vertical position
 	 */
 	public void moveThisBoulderToLeft(int x, int y) {
-		this.groundGrid[x - 1][y] = this.groundGrid[x][y];
-		this.groundGrid[x][y] = new EmptyModel();
+		moveThisBoulder(x,y,Direction.LEFT);
 	}
 
 	/**
